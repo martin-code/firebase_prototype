@@ -1,0 +1,17 @@
+
+
+<h1 THIS IS THE NEW LOGIN PAGE></h1>
+
+<div class="container">
+  <label for="Email"><b>Email</b></label>
+  <input type="email" [(ngModel)]="email" placeholder="Enter Email" >
+
+  <label for="psw"><b>Password</b></label>
+  <input type="password" [(ngModel)]="password" placeholder="email" >
+
+  <button (click)="login()" [disabled]="!email || !password">
+    Login
+  </button>
+  
+</div>
+

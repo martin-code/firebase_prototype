@@ -1,0 +1,8 @@
+<ul class="sites">
+  <li *ngFor="let site of sites">
+    <a routerLink="/content/{{site.id}}/latest">
+      <span class="badge">{{site.id}}</span> {{site.name}}
+    </a>
+  </li>
+</ul>
+

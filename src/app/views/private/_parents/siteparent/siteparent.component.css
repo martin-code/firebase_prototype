@@ -1,0 +1,10 @@
+.RightSelector{
+	height: 2rem;
+	background-color: #ffcccc;
+    flex: none;
+}
+
+.RightContent{
+    background-color: whitesmoke;
+}
+
