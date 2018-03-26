@@ -16,10 +16,12 @@ export class LoginComponent {
   constructor(public authService: AuthService, private router: Router) { }
 
   login() {
-    //this.router.navigate(['content']);
+    this.router.navigate(['content']);
     
-    this.authService.login(this.email, this.password);
     /*
+    MB_TODO: firebase authentification not working
+    this.authService.login(this.email, this.password);
+    
     .then((res) => { 
       this.router.navigate(['content'])
     })
