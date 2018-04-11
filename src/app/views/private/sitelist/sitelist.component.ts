@@ -15,15 +15,36 @@ class SiteTEST {
 })
 export class SitelistComponent implements OnInit {
   
-  items: Observable<any[]>;
+  listRefOcc: AngularFireList<any>;
+  listRefNotOcc: AngularFireList<any>;
+
+  listOcc: Observable<any>;
+  listNotOcc: Observable<any>;
+
+  list_occ: any;
+  list_notocc: any;
 
   constructor(db: AngularFireDatabase) { 
-    // bind items to realtime db
-    this.items = db.list('sites').valueChanges();
-
+    /*
+      Quering lists: https://github.com/angular/angularfire2/blob/master/docs/rtdb/querying-lists.md
+      Multiple Quering lists: https://angularfirebase.com/lessons/multi-property-data-filtering-with-firebase-and-angular-4/
+    */
+    db.list('/sites', ref => ref.orderByChild('occupied').equalTo('true')).valueChanges().subscribe(sites_occ => {
+      this.list_occ = sites_occ;
+    });
+    db.list('/sites', ref => ref.orderByChild('occupied').equalTo('true')).valueChanges().subscribe(sites_occ => {
+      this.list_notocc = sites_occ;
+    });
+    
   }
 
+
   ngOnInit() {
+  }
+
+  sortList(){
+
+
   }
 
 }

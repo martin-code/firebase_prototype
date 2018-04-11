@@ -31,16 +31,17 @@ export class SitelatestComponent implements OnInit {
     // Get parent ActivatedRoute of this route.
     
     this.sub = this.route.parent.params.subscribe(params => {
-      // This code will be executed when a change in param is detected (user selected another site in sitelist menu on left side)
+      // This code will be executed when a change in param is detected (user selected another site in sitelist menu on left 
+      //    side). That means that content of another site must be displayed in this component. 
       this.siteId = +params["id"];    // extract parameter id from route
+      this.messages_ref = this.db.list(this.siteId + '/Messages');
       this.readDB();                  // read from database with new site id
     });
     
   }
 
   readDB(){
-    this.messages_ref = this.db.list(this.siteId + '/Messages');
-    this.messages_display = this.db.list(this.siteId+ '/Messages').valueChanges();
+    this.messages_display = this.messages_ref.valueChanges();
   }
 
   sendTextToDB(user_in: string){

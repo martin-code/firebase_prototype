@@ -18,24 +18,25 @@ export class AuthService {
   isLoggedIn = false;
 
   constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
-    /*
     this.firebaseAuth.authState.subscribe((auth) => {
-      if (auth){
-        this.user_email = auth.email;
-        this.user_id = auth.uid;
-      }
-      else{
-        this.user_email = "";
-        this.user_id = "";
-      }
-      
-    });
-    */
+      this.authState = auth
+  });
     
   }
 
   get userMail(){
     return this.user_email;
+  }
+
+  // Returns current user display name or Guest
+  get currentUserDisplayName(): string {
+    if (!this.authState) { 
+      return 'unknown'; 
+    }
+    //else if (this.currentUserAnonymous) { return 'Anonymous' }
+    else { 
+      return this.authState.name || 'ging nicht';
+    }
   }
 
   isAuthenticated(): Observable<boolean>{

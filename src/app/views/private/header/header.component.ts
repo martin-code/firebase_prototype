@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/authentification/auth.service';
+import { RealtimeDbService } from '../../../services/realtime_db/realtime-db.service';
 
 @Component({
   selector: 'app-header',
@@ -9,8 +10,11 @@ import { AuthService } from '../../../services/authentification/auth.service';
 export class HeaderComponent implements OnInit {
 
   user_id: any;
+  user_name: string;
 
-  constructor(public authService: AuthService,) { }
+  constructor(public authService: AuthService) { 
+    this.user_name = this.authService.currentUserDisplayName;
+  }
 
   ngOnInit() {
   }

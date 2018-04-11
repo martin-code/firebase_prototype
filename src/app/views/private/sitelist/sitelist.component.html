@@ -1,9 +1,15 @@
+
 <ul>
-  <li *ngFor="let item of items | async">
+  <li *ngFor="let item of list_occ">
     <a routerLink="/content/{{item.id}}/latest">
       <span class="badge">{{item.id}}</span> {{item.name}}
     </a>
   </li>
 </ul>
-
-
+<ul>
+  <li *ngFor="let item of list_notocc">
+    <a routerLink="/content/{{item.id}}/latest">
+      <span class="badge">{{item.id}}</span> {{item.name}}
+    </a>
+  </li>
+</ul>
