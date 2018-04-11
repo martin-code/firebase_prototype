@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let item of items | async">
+  <li *ngFor="let item of listitems | async">
     <a routerLink="/content/{{item.id}}/latest">
       <span class="badge">{{item.id}}</span> {{item.name}}
     </a>
