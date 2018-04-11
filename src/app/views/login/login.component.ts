@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../services/authentification/auth.service';
 import { Router } from "@angular/router";
 
 
@@ -13,24 +13,18 @@ export class LoginComponent {
   email: string;
   password: string;
 
-  constructor(public authService: AuthService, private router: Router) { }
+  constructor(public authService: AuthService, private router: Router) { 
+
+    
+  }
+
 
   login() {
-    this.router.navigate(['content']);
-    
-    /*
-    MB_TODO: firebase authentification not working
     this.authService.login(this.email, this.password);
     
-    .then((res) => { 
-      this.router.navigate(['content'])
-    })
+    // MB_TODO: wann sollen die zurückgesetzt werden? hier ist noch nicht klar ob der login funktioniert oder nicht, da dieser vorgang asynchron ist
+    //this.email = this.password = '';  
 
-    this.email = this.password = '';    
-    */
   }
 
-  logout() {
-    this.authService.logout();
-  }
 }

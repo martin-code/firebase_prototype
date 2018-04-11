@@ -1,3 +1,21 @@
 <p>
   sitelatest works! ID = {{siteId}}
 </p>
+
+
+<div>
+  <form>
+      <input #userinput type="text">
+      <button (click)="sendTextToDB(userinput.value)">></button>
+      <button (click)="clearTextMessages()">Clear</button>
+  </form>
+
+  <div>
+    <ul>
+        <li *ngFor="let message_display of messages_display | async">
+          <span class="badge">{{message_display.text}}</span>
+        </li>
+    </ul>
+  </div>
+
+</div>

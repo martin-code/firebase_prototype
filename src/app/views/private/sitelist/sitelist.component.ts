@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Site } from './site';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
+
+
+class SiteTEST {
+  constructor(public name) { }
+}
 
 @Component({
   selector: 'app-sitelist',
@@ -7,6 +14,8 @@ import { Site } from './site';
   styleUrls: ['./sitelist.component.css']
 })
 export class SitelistComponent implements OnInit {
+
+  public sitesTEST: AngularFireList<SiteTEST[]>;
 
   sites: Site[] = [
     { id: 1, name: 'Auhausen' },
@@ -31,7 +40,14 @@ export class SitelistComponent implements OnInit {
     { id: 20, name: 'Brandenburg Heide II' }
   ];
 
-  constructor() { }
+  items: Observable<any[]>;
+  site_content: Observable<any>;
+
+  constructor(db: AngularFireDatabase) { 
+    this.items = db.list('sites').valueChanges();
+    this.site_content = db.object('sites/auhausen').valueChanges();
+  }
+
 
   ngOnInit() {
   }

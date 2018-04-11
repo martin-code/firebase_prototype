@@ -1,8 +1,9 @@
-<ul class="sites">
-  <li *ngFor="let site of sites">
-    <a routerLink="/content/{{site.id}}/latest">
-      <span class="badge">{{site.id}}</span> {{site.name}}
+<ul>
+  <li *ngFor="let item of items | async">
+    <a routerLink="/content/{{item.id}}/latest">
+      <span class="badge">{{item.id}}</span> {{item.name}}
     </a>
   </li>
 </ul>
+
 
